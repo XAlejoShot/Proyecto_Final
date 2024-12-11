@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <link rel="icon" href="/static/images/renewable-energy.png">
+    
+    <title>Just Energy</title>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo"><span>Just Energy</span></a>
+        <nav class="navbar">
+            <a href="#inicio">Inicio</a>
+            <a href="#datos-historicos">Datos Históricos</a>
+            <a href="#calculo">Cálculo</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#formulario-comunicacion">Contacto</a>
+        </nav>
+    </header>
+    
+    <section id="inicio" class="home">
+        <div class="overlay">
+            <div class="content">
+                <h1>Transición Energética Justa</h1>
+                <p>Hacia un futuro más sostenible y justo. Explora datos y descubre cómo puedes contribuir a la transición energética.</p>
+                <a href="#datos-historicos" class="btn">Comenzar</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="datos-historicos" class="info-section">
+        <div class="container">
+            <h2 class="section-title">Datos Históricos de Energía Renovable</h2>
+            <p class="section-description">
+                Descubre las tendencias clave en producción y consumo de energía renovable desde 1965 hasta 2022. 
+                Analiza los datos históricos para entender el impacto de cada fuente energética en el mundo.
+            </p>
+            <div class="data-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="/static/images/sun-energy.png" alt="Icono Energía Solar">
+                    </div>
+                    <h3 class="card-title">Energía Solar</h3>
+                    <p class="card-data"><strong>Producción Total:</strong> 1,200,000 GWh</p>
+                    <p class="card-data"><strong>Año Pico:</strong> 2021</p>
+                    <p class="card-description">
+                        Fuente limpia y abundante obtenida del sol mediante paneles fotovoltaicos. Ideal para reducir emisiones de CO2.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="/static/images/wind-energy.png" alt="Icono Energía Eólica">
+                    </div>
+                    <h3 class="card-title">Energía Eólica</h3>
+                    <p class="card-data"><strong>Producción Total:</strong> 950,000 GWh</p>
+                    <p class="card-data"><strong>Año Pico:</strong> 2020</p>
+                    <p class="card-description">
+                        Aprovecha el viento mediante aerogeneradores. Fuente sostenible y de rápida implementación.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="/static/images/hydroelectric.png" alt="Icono Energía Hidroeléctrica">
+                    </div>
+                    <h3 class="card-title">Energía Hidroeléctrica</h3>
+                    <p class="card-data"><strong>Producción Total:</strong> 2,800,000 GWh</p>
+                    <p class="card-data"><strong>Año Pico:</strong> 2019</p>
+                    <p class="card-description">
+                        Generada a partir del flujo de agua en ríos y embalses. Fuente confiable y con gran historia.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculo" class="form-section">
+        <div class="container">
+            <h2>Calculadora de Energía Solar</h2>
+            <p>Introduce tu consumo eléctrico total y descubre el número de paneles solares que necesitas.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="kwMes" class="form-label">Consumo de energía (kWh/mes):</label>
+                    <input type="number" id="kwMes" class="form-control" placeholder="Ingrese kWh/mes">
+                </div>
+                <div class="col-md-6">
+                    <label for="horasLuz" class="form-label">Horas de luz solar promedio (diarias):</label>
+                    <input type="number" id="horasLuz" class="form-control" placeholder="Ingrese horas diarias">
+                </div>
+            </div>
+            <div class="row mt-4 text-center">
+                <div class="col-md-12">
+                    <button onclick="calcularPaneles()" class="btn btn-primaryy">Calcular</button>
+                </div>
+            </div>
+            <div id="resultado" class="mt-4"></div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <h2>Dashboard de Energía Renovable</h2>
+            <button id="cargarDatosBtn" class="btn btn-primary">Cargar Datos</button>
+            <div id="resultado_datos" class="resultado-datos"></div>
+        </div>
+    </section>
+
+    <section id="formulario-comunicacion" class="seccion-unica">
+        <div class="contenedor-interno">
+            <h2 class="encabezado-contacto">Enlázate con Nosotros</h2>
+            <p class="descripcion-formulario">Déjanos tus datos y nuestro equipo te contactará lo antes posible.</p>
+            <form id="formularioDatos" class="formulario-entrada">
+                <div class="fila-formulario">
+                    <div class="grupo-campos">
+                        <label for="nombrePersona">Nombre</label>
+                        <input type="text" id="nombrePersona" name="nombrePersona" placeholder="Ingresa tu nombre" required>
+                    </div>
+                    <div class="grupo-campos">
+                        <label for="apellidoPersona">Apellido</label>
+                        <input type="text" id="apellidoPersona" name="apellidoPersona" placeholder="Ingresa tu apellido" required>
+                    </div>
+                </div>
+                <div class="fila-formulario">
+                    <div class="grupo-campos">
+                        <label for="correoElectronico">Correo Electrónico</label>
+                        <input type="email" id="correoElectronico" name="correoElectronico" placeholder="Ingresa tu correo" required>
+                    </div>
+                    <div class="grupo-campos">
+                        <label for="telefonoUsuario">Teléfono</label>
+                        <input type="tel" id="telefonoUsuario" name="telefonoUsuario" placeholder="Ingresa tu teléfono" required>
+                    </div>
+                </div>
+                <button type="submit" class="boton-envio">Enviar Información</button>
+            </form>
+        </div>
+    </section>
+    
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
